@@ -1,0 +1,19 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="60" height="60" rx="30" fill="#868788"/>
+<g filter="url(#filter0_b_440_104)">
+<rect width="60" height="60" rx="30" fill="url(#paint0_radial_440_104)" fill-opacity="0.5"/>
+</g>
+<path d="M35 40L25 30L35 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<filter id="filter0_b_440_104" x="-4" y="-4" width="68" height="68" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_440_104"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_440_104" result="shape"/>
+</filter>
+<radialGradient id="paint0_radial_440_104" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(30 30) scale(105.801 630.476)">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#1ABC9C"/>
+</radialGradient>
+</defs>
+</svg>

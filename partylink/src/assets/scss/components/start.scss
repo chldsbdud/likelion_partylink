@@ -18,8 +18,10 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* 세로 방향으로 배치 */
+    justify-content: center; /* 세로 방향 중앙 정렬 */
+    align-items: center; /* 가로 방향 중앙 정렬 */
+    position: relative; /* 절대 위치 요소 배치를 위해 추가 */
     background-color: #262b34;
 
     .backgoundImg {
@@ -28,6 +30,7 @@ body {
       top: 0;
       opacity: 0.2;
     }
+
     .img-person {
       width: 110%;
       display: block;
@@ -43,13 +46,141 @@ body {
         background: linear-gradient(to bottom, rgba(38, 43, 52, 0) 0%, rgba(38, 43, 52, 1) 100%);
       }
     }
+
     h4 {
+      position: absolute;
+      top: 0;
       font-family: "PartialSansKR";
       font-weight: 400;
       font-size: 36px;
       color: #fff;
+      margin-bottom: 20px; /* 아래 여백 추가 */
+    }
+
+    .input-css {
+      width: 100%; /* 부모 크기 기준으로 맞춤 */
+      display: flex;
+      flex-direction: column; /* 입력 필드들을 세로로 배치 */
+      justify-content: center;
+      align-items: center;
+      margin-top: 270px;
+
+      input,
+      button {
+        padding-left: 20px;
+        cursor: pointer;
+        color: #fff;
+        text-align: start;
+      }
+
+      input::placeholder {
+        color: #fff;
+      }
+
+      .nickname {
+        width: 235px;
+        height: 41px;
+        border-radius: 67px;
+        border: 1px solid #fff;
+        background-color: #646c7b;
+        margin-bottom: 10px; /* 입력 필드 간격 */
+      }
+
+      .link {
+        width: 259px;
+        height: 45px;
+        border-radius: 67px;
+        border: 1px solid #fff;
+        background: radial-gradient(circle at center, #ffffff80 40%, #3498db 100%) no-repeat, /* 그라데이션 */ url("../../img/link.svg") no-repeat; /* 아이콘 */
+        background-size: 100% 100%, 20px 20px;
+        background-position: center, right 10px center;
+        background-repeat: no-repeat;
+      }
+      .link-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        opacity: 0.8;
+        animation: fade-in-out 3s;
+        position: absolute;
+        bottom: 33%;
+        img {
+          width: 9px;
+          height: auto;
+        }
+        p {
+          color: #c4ebe3;
+          font-size: 14px;
+
+          @keyframes fade-in-out {
+            0% {
+              opacity: 0;
+            }
+            10% {
+              opacity: 1;
+            }
+            90% {
+              opacity: 1;
+            }
+            100% {
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .explain {
+      margin-top: 70px; /* 텍스트 간격 조정 */
+      text-align: center;
+      color: #fff;
+      font-size: 14px;
+      line-height: 18.2px;
+      max-width: 300px;
+      p {
+        margin: 0;
+      }
+    }
+    .nextBtn {
+      width: 60px;
       position: absolute;
-      top: 3%;
+      right: 0;
+      bottom: 0;
+      margin: 40px;
+    }
+
+    .game-loading {
+      color: #fff;
+      position: absolute;
+      bottom: 47%;
+      font-size: 18px;
+    }
+    .nickname-connected {
+      background-color: #646c7b;
+      width: 162px;
+      height: 35px;
+      margin-bottom: 5px;
+      border: 0;
+      border-radius: 18px;
+      text-align: center !important;
+      padding: 0 !important;
+    }
+    .people-num {
+      display: flex;
+      color: #fff;
+      position: absolute;
+      bottom: 13%;
+      .num-point {
+        color: #c4ebe3;
+        margin-right: 5px;
+      }
+    }
+    .beforeBtn {
+      width: 60px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      margin: 40px;
     }
   }
 }
