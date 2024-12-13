@@ -16,6 +16,7 @@ main {
 
   background-color: #1e2224;
   border-radius: 15px 15px 0 0;
+  color: white;
 }
 
 .game_box > * {
@@ -47,6 +48,7 @@ main {
   font-size: 2vh;
   margin-top: 5px;
   z-index: 3;
+  margin-left: 20px;
 }
 
 .me {

@@ -5,13 +5,14 @@
   font-style: normal;
 }
 
-body {
+.ending_page {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.ending_page {
+.ending_center {
   width: 70vw;
   height: 65vh;
   padding: 5vh;

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "../assets/css/SbhGame.css";
-import finger5 from "../assets/img/5.png";
-import finger4 from "../assets/img/4.png";
-import finger3 from "../assets/img/3.png";
-import finger2 from "../assets/img/2.png";
-import finger1 from "../assets/img/1.png";
-import finger0 from "../assets/img/0.png";
+import styles from "../../assets/css/SbhGame.module.css"; // CSS 모듈 임포트
+import finger5 from "../../assets/img/5.png";
+import finger4 from "../../assets/img/4.png";
+import finger3 from "../../assets/img/3.png";
+import finger2 from "../../assets/img/2.png";
+import finger1 from "../../assets/img/1.png";
+import finger0 from "../../assets/img/0.png";
 
 const SbhGame = () => {
   const [fingerCount, setFingerCount] = useState(5); // 손가락 개수를 상태로 관리
@@ -20,33 +20,33 @@ const SbhGame = () => {
 
   return (
     <main>
-      <div className="game_box">
-        <div className="user_po1">
-          <div className="user user1">
-            <img className="user_img myturn_img" src={finger5} alt="상대 손" />
-            <div className="user_name myturn">닉네임</div>
+      <div className={styles.game_box}>
+        <div className={styles.user_po1}>
+          <div className={`${styles.user} ${styles.user1}`}>
+            <img className={`${styles.user_img} ${styles.myturn_img}`} src={finger5} alt="상대 손" />
+            <div className={`${styles.user_name} ${styles.myturn}`}>닉네임</div>
           </div>
-          <div className="user user2">
-            <img className="user_img" src={finger5} alt="상대 손" />
-            <div className="user_name">닉네임</div>
-          </div>
-        </div>
-
-        <div className="user_po2">
-          <div className="user user3">
-            <img className="user_img" src={finger5} alt="상대 손" />
-            <div className="user_name">닉네임</div>
-          </div>
-          <div className="user user4">
-            <img className="user_img" src={finger5} alt="상대 손" />
-            <div className="user_name">닉네임</div>
+          <div className={`${styles.user} ${styles.user2}`}>
+            <img className={styles.user_img} src={finger5} alt="상대 손" />
+            <div className={styles.user_name}>닉네임</div>
           </div>
         </div>
 
-        <div className="user_po3">
-          <div className="user me" onClick={downFinger}>
-            <img className="user_img" src={fingerImages[fingerCount]} alt="손가락 접기" />
-            <div className="user_name">닉네임 (나)</div>
+        <div className={styles.user_po2}>
+          <div className={`${styles.user} ${styles.user3}`}>
+            <img className={styles.user_img} src={finger5} alt="상대 손" />
+            <div className={styles.user_name}>닉네임</div>
+          </div>
+          <div className={`${styles.user} ${styles.user4}`}>
+            <img className={styles.user_img} src={finger5} alt="상대 손" />
+            <div className={styles.user_name}>닉네임</div>
+          </div>
+        </div>
+
+        <div className={styles.user_po3}>
+          <div className={`${styles.user} ${styles.me}`} onClick={downFinger}>
+            <img className={styles.user_img} src={fingerImages[fingerCount]} alt="손가락 접기" />
+            <div className={styles.user_name}>닉네임 (나)</div>
           </div>
         </div>
       </div>

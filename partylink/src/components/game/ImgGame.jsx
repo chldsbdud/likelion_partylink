@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "../assets/css/ImgGame.css";
+import styles from "../../assets/css/ImgGame.module.css"; // CSS 모듈 임포트
 
 const ImgGame = () => {
   const [lineCoords, setLineCoords] = useState(null); // SVG 선의 시작/끝 좌표
@@ -65,49 +65,49 @@ const ImgGame = () => {
 
   return (
     <main>
-      <div className="game_box">
-        <div className="user_po1">
-          <div className="user user1" onClick={selectPerson}>
-            <div className="user_score" onClick={() => plusScore(setScore1)}>
+      <div className={styles.game_box}>
+        <div className={styles.user_po1}>
+          <div className={`${styles.user} ${styles.user1}`} onClick={selectPerson}>
+            <div className={styles.user_score} onClick={() => plusScore(setScore1)}>
               {/* 일단 구현을 위해 클릭하면 올라가는 것으로 구현, 결과에 대한 백엔드 코드 받으면 수정 필요 */}
               {score1}
             </div>
-            <div className="user_img myturn_img">닉</div>
-            <div className="user_name myturn">닉네임</div>
+            <div className={`${styles.user_img} ${styles.myturn_img}`}>닉</div>
+            <div className={`${styles.user_name} ${styles.myturn}`}>닉네임</div>
           </div>
-          <div className="user user2" onClick={selectPerson}>
-            <div className="user_score" onClick={() => plusScore(setScore2)}>
+          <div className={`${styles.user} ${styles.user2}`} onClick={selectPerson}>
+            <div className={styles.user_score} onClick={() => plusScore(setScore2)}>
               {score2}
             </div>
-            <div className="user_img">닉</div>
-            <div className="user_name">닉네임</div>
+            <div className={styles.user_img}>닉</div>
+            <div className={styles.user_name}>닉네임</div>
           </div>
         </div>
 
-        <div className="user_po2">
-          <div className="user user3" onClick={selectPerson}>
-            <div className="user_score" onClick={() => plusScore(setScore3)}>
+        <div className={styles.user_po2}>
+          <div className={`${styles.user} ${styles.user3}`} onClick={selectPerson}>
+            <div className={styles.user_score} onClick={() => plusScore(setScore3)}>
               {score3}
             </div>
-            <div className="user_img">닉</div>
-            <div className="user_name">닉네임</div>
+            <div className={styles.user_img}>닉</div>
+            <div className={styles.user_name}>닉네임</div>
           </div>
-          <div className="user user4" onClick={selectPerson}>
-            <div className="user_score" onClick={() => plusScore(setScore4)}>
+          <div className={`${styles.user} ${styles.user4}`} onClick={selectPerson}>
+            <div className={styles.user_score} onClick={() => plusScore(setScore4)}>
               {score4}
             </div>
-            <div className="user_img">닉</div>
-            <div className="user_name">닉네임</div>
+            <div className={styles.user_img}>닉</div>
+            <div className={styles.user_name}>닉네임</div>
           </div>
         </div>
 
-        <div className="user_po3">
-          <div className="user me" ref={meRef}>
-            <div className="user_score" onClick={() => plusScore(setScoreMe)}>
+        <div className={styles.user_po3}>
+          <div className={`${styles.user} ${styles.me}`} ref={meRef}>
+            <div className={styles.user_score} onClick={() => plusScore(setScoreMe)}>
               {scoreMe}
             </div>
-            <div className="user_img me_img">닉</div>
-            <div className="user_name">닉네임 (나)</div>
+            <div className={`${styles.user_img} ${styles.me_img}`}>닉</div>
+            <div className={styles.user_name}>닉네임 (나)</div>
           </div>
         </div>
       </div>

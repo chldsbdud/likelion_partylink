@@ -13,11 +13,7 @@
 }
 
 body {
-  margin: 0;
   background-color: #262b34;
-
-  font-family: "PartialSansKR-Regular";
-  color: white;
 }
 
 header {
@@ -41,11 +37,17 @@ header {
   font-weight: 400;
   font-size: 24px;
   opacity: 0.8;
+
+  font-family: "PartialSansKR-Regular";
+  color: white;
 }
 
 .game_name {
   font-weight: 400;
   font-size: 36px;
+
+  font-family: "PartialSansKR-Regular";
+  color: white;
 }
 
 .game_info {
