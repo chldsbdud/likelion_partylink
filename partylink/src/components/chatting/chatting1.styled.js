@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const ContainerAll = styled.div`
   display: flex;
   justify-content: center;
@@ -6,47 +7,39 @@ export const ContainerAll = styled.div`
   width: 100%;
   height: 100%;
   background-color: #262b34;
-  box-sizing: border-box; /* 여백이 포함된 전체 크기 유지 */
-  padding: 0 10px; /* 좌우 여백 유지 */
+  box-sizing: border-box;
+  padding: 0 10px;
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%; /* 화면에 맞게 늘어남 */
-  max-width: 600px; /* 최대 너비를 설정 */
+  width: 100%;
+  max-width: 600px;
   height: 500px;
   background-color: #1e2224;
   border-radius: 0 0 25px 25px;
   margin-top: 10px;
-  box-sizing: border-box; /* 패딩과 보더를 너비에 포함 */
+  box-sizing: border-box;
 `;
 
 export const ChatInfo = styled.div`
   padding: 25px;
   background-color: #1e2224;
+  overflow-y: overlay;
+  overflow-x: hidden;
 
-  overflow-y: overlay; /* 스크롤바가 콘텐츠 위에 그려지도록 설정 */
-  overflow-x: hidden; /* 수평 스크롤 숨기기 */
-
-  /* 스크롤바 설정 */
   &::-webkit-scrollbar {
     width: 7px;
   }
 
-  /* 스크롤바 막대 설정 */
   &::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 1);
     border-radius: 10px;
     border: 1px solid #1e2224;
-
-    max-height: 10px;
-  }
-
-  /* 스크롤바 뒷 배경 설정 */
-  &::-webkit-scrollbar-track {
-    background-color: #1e2224;
+    background-clip: padding-box;
+    box-shadow: inset 0 0 8px 8px #51525c;
   }
 `;
 
@@ -65,7 +58,6 @@ export const Information = styled.div`
 export const PlayerLabel = styled.div`
   font-size: 14px;
   color: #848687;
-  // margin-bottom: 10px;
 `;
 
 export const PlayerInfo = styled.div`
@@ -74,10 +66,17 @@ export const PlayerInfo = styled.div`
   gap: 10px;
 `;
 
+export const MessageWrapper = styled.div`
+  margin-top: ${(props) => (props.isGap ? "10px" : "1px")};
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Message = styled.div`
   align-self: ${(props) => (props.isUser ? "flex-end" : "flex-start")};
   font-size: 14px;
-  color: #fff;
+  color: ${(props) => (props.isQuestion ? "#4722E4" : "#fff")};
+  font-weight: ${(props) => (props.isQuestion ? "bold" : "normal")};
   margin: 0;
   padding: 10px 15px;
   background: ${(props) => (props.isUser ? "radial-gradient(circle, #c2d5cb 0.1%, #A1B5A9 50%)" : "radial-gradient(circle, #9cabc6 0.1%, #7e90b0 50%)")};
@@ -103,21 +102,25 @@ export const InputContainer = styled.div`
   padding: 10px 15px;
   gap: 10px;
   position: relative;
-
   margin-bottom: 10px;
 `;
 
-export const QIcon = styled.img`
-  width: 38px;
-  height: 38px;
-`;
+export const QIcon = ({ isMyTurn }) => (
+  <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="15.5" cy="15.5" r="15.5" fill="#646C7B" />
+    <path
+      d="M13.5039 18.0977H16.0234L17.0977 19.4844C17.7715 18.6934 18.1523 17.502 18.1523 15.9297C18.1523 12.9023 16.7266 11.2617 14.5391 11.2617C12.3516 11.2617 10.9062 12.9023 10.9062 15.9297C10.9062 18.957 12.3516 20.5977 14.5391 20.5977C14.8223 20.5977 15.0957 20.5684 15.3594 20.5195L13.5039 18.0977ZM21.1406 15.9297C21.1406 18.4492 20.2812 20.3926 18.8945 21.6133L20.9062 24.1719H18.1523L17.0195 22.7461C16.2578 23.0488 15.418 23.1953 14.5391 23.1953C10.7695 23.1953 7.91797 20.5195 7.91797 15.9297C7.91797 11.3203 10.7695 8.66406 14.5391 8.66406C18.2695 8.66406 21.1406 11.3203 21.1406 15.9297Z"
+      fill={isMyTurn ? "#4722E4" : "white"}
+    />
+  </svg>
+);
 
 export const HelpText = styled.img`
   display: flex;
   margin-right: 40px;
-
   width: 35px;
   height: 20px;
+  cursor: pointer;
 `;
 
 export const IconButtonAll = styled.div`
@@ -125,22 +128,22 @@ export const IconButtonAll = styled.div`
   position: relative;
   justify-content: center;
   align-items: center;
-
+  cursor: pointer;
   right: 16px;
 `;
 
 export const IconButton1 = styled.img`
-  width: 45px; /* Circle 크기 */
+  width: 45px;
   height: 45px;
-  position: absolute; /* Arrow와 겹치도록 배치 */
-  z-index: 1; /* Circle이 뒤로 가도록 설정 */
+  position: absolute;
+  z-index: 1;
 `;
 
 export const IconButton2 = styled.img`
-  width: 24px; /* Arrow 크기 */
+  width: 24px;
   height: 24px;
-  position: absolute; /* Circle 위에 겹침 */
-  z-index: 2; /* Arrow가 위로 올라오도록 설정 */
+  position: absolute;
+  z-index: 2;
 `;
 
 export const Input = styled.input`
@@ -148,38 +151,14 @@ export const Input = styled.input`
   border: none;
   background: transparent;
   font-size: 14px;
-  color: #fff;
+  font-weight: ${(props) => (props.isMyTurn ? "bold" : "normal")}; /* 질문은 bold */
+  color: ${(props) => (props.isMyTurn ? "#4722E4" : "#fff")}; /* 내 차례면 텍스트 색상 남색 */
   outline: none;
 
-  margin-top: 3px;
+  // margin-top: 3px;
 
   &::placeholder {
-    color: white;
+    color: ${(props) => (props.isMyTurn ? "#4722E4" : "white")}; /* 플레이스홀더 색상 변경 */
+    // font-weight: ${(props) => (props.isMyTurn ? "bold" : "normal")}; /* 질문은 bold */
   }
-`;
-
-export const HelpButton = styled.img`
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-`;
-
-export const DragButton = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  background-color: #9ca3af;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 10;
-`;
-
-export const MessageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-height: 350px; // 메시지가 많아지면 이 높이를 넘지 않도록 설정
-  overflow-y: auto; // 스크롤 가능하도록 설정
 `;

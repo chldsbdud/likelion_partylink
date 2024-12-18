@@ -16,15 +16,19 @@ const Chatting1 = () => {
   const [messages, setMessages] = useState([
     { text: "Q. 제일 웃음이 많은 사람은?", sender: "player" },
     { text: "Lorem ipsum dolor sit", sender: "player" },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,", sender: "user" },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,", sender: "user" },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,", sender: "user" },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,", sender: "user" },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,", sender: "user" },
-    { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,", sender: "user" },
+    { text: "Q. 제일 웃음이 많은 사람은?", sender: "player" },
     { text: "Q. 제일 웃음이 많은 사람은?", sender: "player" },
   ]);
   const [inputValue, setInputValue] = useState("");
+  const [isMyTurn, setIsMyTurn] = useState(false); // 내 차례 여부 상태 추가
+
+  const handleSendClick = () => {
+    if (inputValue.trim()) {
+      setMessages([...messages, { text: inputValue, sender: "user" }]);
+      setInputValue("");
+      setIsMyTurn(!isMyTurn);
+    }
+  };
 
   const randomQuestions = [
     "이번 겨울에 눈싸움 한 사람 접어",
@@ -83,14 +87,6 @@ const Chatting1 = () => {
     setInputValue(randomQuestion);
   };
 
-  // 메시지 입력 이벤트
-  const handleSendClick = () => {
-    if (inputValue.trim()) {
-      setMessages([...messages, { text: inputValue, sender: "user" }]);
-      setInputValue(""); // 입력창 비우기
-    }
-  };
-
   return (
     <Styled.ContainerAll>
       <Styled.Container>
@@ -100,21 +96,30 @@ const Chatting1 = () => {
           </Styled.Information>
           <Styled.PlayerInfo>
             <Styled.PlayerLabel>플레이어1</Styled.PlayerLabel>
-            {messages.map((message, index) => (
-              <Styled.Message key={index} isUser={message.sender === "user"}>
-                {message.text}
-              </Styled.Message>
-            ))}
+            {messages.map((message, index) => {
+              const isGap = index === 0 || messages[index - 1].sender !== message.sender; // 이전 메시지와 다른 사람이 보냈는지 확인
+              return (
+                <Styled.MessageWrapper key={index} isGap={isGap}>
+                  <Styled.Message isUser={message.sender === "user"} isQuestion={message.text.startsWith("Q.")}>
+                    {message.text}
+                  </Styled.Message>
+                </Styled.MessageWrapper>
+              );
+            })}
           </Styled.PlayerInfo>
         </Styled.ChatInfo>
 
-        <Styled.ChatInputWrapper>
-          <Styled.InputContainer>
-            <Styled.QIcon src={Question} alt="QuestionIcon" />
-            <Styled.Input type="text" placeholder="대화를 시작해보세요." value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-
+        <Styled.ChatInputWrapper isMyTurn={isMyTurn}>
+          <Styled.InputContainer isMyTurn={isMyTurn}>
+            <Styled.QIcon src={Question} alt="QuestionIcon" isMyTurn={isMyTurn} />
+            <Styled.Input
+              type="text"
+              placeholder="대화를 시작해보세요."
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              isMyTurn={isMyTurn}
+            />
             <Styled.HelpText src={HelpImage} alt="Help" onClick={handleHelpClick} />
-
             <Styled.IconButtonAll onClick={handleSendClick}>
               <Styled.IconButton1 src={Circle} alt="SendIcon" />
               <Styled.IconButton2 src={Arrow} alt="SendIcon" />
