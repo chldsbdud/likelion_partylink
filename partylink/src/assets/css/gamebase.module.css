@@ -58,7 +58,8 @@ header {
 }
 
 .modal {
-  width: 70%;
+  position: fixed;
+  width: 70vw;
   height: 60vh;
 
   background: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(26, 188, 156, 1) 100%);
@@ -72,9 +73,10 @@ header {
 
   font-family: "Pretendard-Regular";
   font-size: 18px;
+  z-index: 3000;
 }
 
-.modal-content {
+.modal_content {
   width: 100%;
   height: 60vh;
   padding: 0 10%;
@@ -82,14 +84,13 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   background-color: rgb(100, 108, 123, 0.8);
   border-radius: 28px;
-
-  justify-content: center;
 }
 
-.modal-overlay {
+.modal_overlay {
   position: fixed;
   top: 0;
   left: 0;
