@@ -38,7 +38,7 @@ const StartGuest = () => {
       const data = JSON.parse(event.data);
       if (data.type === "self_id") {
         console.log("본인 ID 수신:", data.userId);
-        navigate("/start-guest-next");
+        navigate("/start-guest-loading/${room_id}");
       } else if (data.type === "error") {
         console.error("에러 메시지:", data.message);
         setError(data.message);
